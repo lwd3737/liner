@@ -1,11 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 
 import { ForYouPage, MyHighlightsPage } from "pages";
-import { Navigation, Header } from "common/components";
+import {
+  Navigation,
+  Header,
+  TrendingKeywords,
+  TrendingPages,
+} from "common/components";
+import domains from "common/domains";
+import { PageLayout } from "common/templates";
+
+const { foryou, myhighlights, more } = domains;
 
 function App() {
+  const history = useHistory();
+
   return (
     <S.App>
       <Header />
@@ -15,15 +26,20 @@ function App() {
 
         <main>
           <Switch>
-            <Route exact path="/home">
+            <Route exact path="/" render={() => history.replace(foryou)} />
+            <Route exact path={foryou}>
               <ForYouPage />
             </Route>
-            <Route exact path="/myhighlights/highlights">
+            <Route exact path={myhighlights}>
               <MyHighlightsPage />
             </Route>
+            <Route exact path={more} render={() => <PageLayout />} />
           </Switch>
         </main>
-        <aside></aside>
+        <aside>
+          <TrendingKeywords />
+          <TrendingPages />
+        </aside>
       </section>
     </S.App>
   );
@@ -40,7 +56,9 @@ const S = {
 
     section {
       display: flex;
-      margin: 104px 0;
+      position: absolute;
+      top: 64px;
+      z-index: 1;
     }
   `,
 };

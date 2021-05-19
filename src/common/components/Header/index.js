@@ -27,5 +27,6 @@ const S = {
     height: 64px;
     margin: 0 auto;
     padding: 15px;
+    z-index: 2;
   `,
 };

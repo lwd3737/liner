@@ -6,7 +6,10 @@ import { PageLayout } from "common/templates";
 function ForYouPage() {
   return (
     <S.ForYouPage>
-      <PageLayout title="For You"></PageLayout>
+      <PageLayout
+        title="For You"
+        subTitle="Picked by LINER, just for you"
+      ></PageLayout>
     </S.ForYouPage>
   );
 }
