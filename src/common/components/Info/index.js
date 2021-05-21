@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import { ReactComponent as InfoIcon } from "assets/images/info.svg";
-import { ReactComponent as CloseIcon } from "assets/images/close.svg";
+import InfoButton from "./InfoButton";
+import CloseButton from "./CloseButton";
 
-function Info({ text, image }) {
+function Info({ info, image }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { textTitle, textContents } = info;
 
   const onToggleTooltip = () => {
     setIsOpen(!isOpen);
@@ -13,19 +14,16 @@ function Info({ text, image }) {
 
   return (
     <S.Info>
-      <span className="info-icon" onClick={onToggleTooltip}>
-        <InfoIcon />
-      </span>
+      <InfoButton onClick={onToggleTooltip} />
+
       {isOpen && (
         <div className="info-tooltip-container">
           <div className="tooltip-triangle"></div>
           <div className="tooltip-rectangle">
-            <button className="close-btn" onClick={onToggleTooltip}>
-              <CloseIcon />
-            </button>
+            <CloseButton onClick={onToggleTooltip} />
             <div className="text-container">
-              <h3 className="text-title">title</h3>
-              <div className="text-contents">text................</div>
+              <h3 className="text-title">{textTitle}</h3>
+              <div className="text-contents">{textContents}</div>
             </div>
           </div>
         </div>

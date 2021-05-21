@@ -5,11 +5,11 @@ import Search from "./Search";
 import Right from "./Right";
 import { ReactComponent as Logo } from "assets/images/logo.svg";
 
-function Header() {
+function Header({ zIndex, increaseHeaderZIndex }) {
   return (
-    <S.Header>
+    <S.Header zIndex={zIndex}>
       <Logo />
-      <Search />
+      <Search increaseHeaderZIndex={increaseHeaderZIndex} />
       <Right />
     </S.Header>
   );
@@ -27,6 +27,7 @@ const S = {
     height: 64px;
     margin: 0 auto;
     padding: 15px;
-    z-index: 2;
+    background-color: white;
+    z-index: ${({ zIndex }) => zIndex};
   `,
 };

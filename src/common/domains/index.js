@@ -1,5 +1,5 @@
 const domains = {
-  foryou: "/home",
+  foryou: "/foryou",
   myhighlights: "/myhighlights/highlights",
   more: "/more",
 };

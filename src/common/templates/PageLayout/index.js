@@ -3,12 +3,15 @@ import styled, { css } from "styled-components";
 
 import { Info } from "common/components";
 
-function PageLayout({ children, title, subTitle, info }) {
+function PageLayout({ children, title, subTitle, info, HeadRight }) {
   return (
     <S.PageLayout>
       <div className="head">
-        <h1 className="title">{title}</h1>
-        <Info />
+        <div className="left">
+          <h1 className="title">{title}</h1>
+          {info && <Info info={info} />}
+        </div>
+        <div className="right">{HeadRight && <HeadRight />}</div>
       </div>
       <h3 className="sub-title">{subTitle}</h3>
 
@@ -32,15 +35,26 @@ const S = {
 
         .head {
           display: flex;
+          justify-content: space-between;
 
-          .title {
-            margin-bottom: 16px;
-            font-size: 2rem;
-            font-weight: ${font.weight.bold};
+          .left {
+            display: flex;
+
+            .title {
+              margin-bottom: 16px;
+              font-size: 2rem;
+              font-weight: ${font.weight.bold};
+            }
+          }
+
+          .right {
+            display: flex;
+            align-items: flex-end;
           }
         }
 
         .sub-title {
+          margin-bottom: 24px;
           color: ${colors.gray1};
           font-weight: ${font.weight.middle};
           font-size: 0.9rem;

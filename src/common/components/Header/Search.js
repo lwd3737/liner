@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Overlay } from "common/components";
-import { shape1, hover } from "common/styles";
-import { ReactComponent as SearchIcon } from "assets/images/search.svg";
+import { shape1 } from "common/styles";
+import SearchButton from "./SearchButton";
 
-function Search() {
+function Search({ increaseHeaderZIndex }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const onChange = (e) => {
     const { value } = e.target;
     setText(value);
+    increaseHeaderZIndex();
   };
 
   const toggleOverlay = () => {
     setIsFocused(!isFocused);
+    increaseHeaderZIndex();
   };
 
   return (
@@ -30,9 +32,7 @@ function Search() {
           onFocus={toggleOverlay}
           onBlur={toggleOverlay}
         />
-        <span className="wrapper-icon">
-          <SearchIcon className="search-icon" />
-        </span>
+        <SearchButton />
       </form>
 
       {isFocused && <Overlay style={overlayStyle} />}
@@ -68,18 +68,6 @@ const S = {
 
         &:focus {
           outline: none;
-        }
-      }
-
-      .search-icon {
-        position: absolute;
-        top: 4px;
-        right: 10px;
-        border-radius: 50%;
-        padding: 3px;
-
-        &:hover {
-          ${hover};
         }
       }
     }

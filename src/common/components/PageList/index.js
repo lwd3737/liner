@@ -3,16 +3,17 @@ import styled, { css } from "styled-components";
 
 import PageItem from "./PageItem";
 
-function PageList({ pages }) {
+function PageList({ pages, increaseMainZIndex }) {
   return (
     <S.PageList>
-      {pages && pages.map((page) => <PageItem key={page.id} {...page} />)}
-      <PageItem />
-      <PageItem />
-      <PageItem />
-      <PageItem />
-      <PageItem />
-      <PageItem />
+      {pages &&
+        pages.map((page) => (
+          <PageItem
+            key={page.id}
+            {...page}
+            increaseMainZIndex={increaseMainZIndex}
+          />
+        ))}
     </S.PageList>
   );
 }
@@ -20,5 +21,5 @@ function PageList({ pages }) {
 export default PageList;
 
 const S = {
-  PageList: styled.ul``,
+  PageList: styled.div``,
 };

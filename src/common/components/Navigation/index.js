@@ -39,7 +39,8 @@ const S = {
         display: flex;
         flex-direction: column;
         position: fixed;
-        margin-top: 40px;
+        z-index: 99999;
+        margin-top: 26px;
 
         .nav-item {
           display: inline-block;
@@ -49,6 +50,12 @@ const S = {
           color: ${colors.gray1};
           font-weight: ${font.weight.lighter};
           font-size: 1.2rem;
+          line-height: 2.9;
+
+          &:hover {
+            background-color: ${colors.gray3};
+            border-radius: 8px;
+          }
         }
       `;
     }}
